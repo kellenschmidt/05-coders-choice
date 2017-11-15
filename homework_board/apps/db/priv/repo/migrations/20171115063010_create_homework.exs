@@ -1,10 +1,10 @@
-defmodule Db.Repo.Migrations.CreateHomework do
+defmodule Db.Repo.Migrations.CreateAssignments do
   use Ecto.Migration
 
   def change do
-    create table(:homework) do
+    create table(:assignments) do
       add :title, :string
-      add :description, :string
+      add :description, :string, default: ""
       add :priority, :integer, default: 0
     end
   end
