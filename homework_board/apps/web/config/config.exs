@@ -9,6 +9,13 @@ use Mix.Config
 config :web,
   namespace: Web
 
+config :web,
+  ecto_repos: [Db.Repo]
+
+# Configure phoenix generators
+config :phoenix, :generators, model: false,
+  migration: false
+
 # Configures the endpoint
 config :web, WebWeb.Endpoint,
   url: [host: "localhost"],
