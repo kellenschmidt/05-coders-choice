@@ -18,6 +18,7 @@ defmodule FrontendWeb.Router do
 
     get "/", PageController, :index
     get "/new", NewAssignmentController, :index
+    post "/new", NewAssignmentController, :create
   end
 
   # Other scopes may use custom stacks.

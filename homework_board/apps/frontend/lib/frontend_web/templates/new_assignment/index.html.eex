@@ -1,3 +1,11 @@
-<div class="jumbotron">
-  <h2>Hello World, from Phoenix!</h2>
-</div>
+<%= form_for @changeset, new_assignment_path(@conn, :create), fn f -> %>
+  <label>
+    Title: <%= text_input f, :title %>
+  </label>
+
+  <label>
+    Priority: <%= select f, :priority, 1..10 %>
+  </label>
+
+  <%= submit "Submit" %>
+<% end %>

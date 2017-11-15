@@ -23,7 +23,7 @@ defmodule Frontend.Mixfile do
   def application do
     [
       mod: {Frontend.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :db, :phoenix_ecto]
     ]
   end
 
@@ -40,8 +40,10 @@ defmodule Frontend.Mixfile do
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:phoenix_ecto, "~> 3.2.1"},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:db, in_umbrella: true}
     ]
   end
 end
