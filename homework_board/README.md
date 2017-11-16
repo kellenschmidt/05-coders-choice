@@ -1,4 +1,2 @@
 # HomeworkBoard
 
-**TODO: Add description**
-
