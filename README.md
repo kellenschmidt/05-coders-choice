@@ -4,6 +4,9 @@ Homework Board is an application for tracking your homework over the course of a
 Homework Board lets you input your homework assignments and then helps you keep track of
 those assignments. Specific features TBD (but they will be cool!).
 
+I'm having a ton of fun with the assignment so far and I'm really excited to put in a ton of
+work on it in the next week.
+
 ## Running project locally
 
 1. Install PostgreSQL
@@ -22,16 +25,29 @@ createuser -s -r postgres
 git clone https://github.com/kellenschmidt/05-coders-choice/
 ```
 
-4. Create database
+4. Install db dependencies
 ```
-cd 05-coders-choice/db/
+cd homework_board/apps/db/
+mix deps.get
+```
+
+5. Create database
+```
 mix ecto.create
 mix ecto.migrate
 ```
 
-5. Start web application
+6. Install frontend dependencies
 ```
 cd ../frontend/
+mix deps.get
+cd assets/
+npm install
+cd ../
+```
+
+7. Start web application
+```
 mix phx.server
 ```
 
@@ -60,6 +76,8 @@ mix phx.server
 
 1. Are my frontend and backend seperated properly? Are they interacting in the way that you would hope?
 2. How do I install bootstrap and sass as npm dependencies (see explanation of problem below)
+3. General thoughts about implementation approach
+4. Advice as I progress with the project this next week
 
 ## Problem with Bootstrap and Sass
 
@@ -82,12 +100,10 @@ git clone https://github.com/kellenschmidt/05-coders-choice/
 cd homework_board/apps/frontend/assets/
 ```
 
-3. Attempt to install brunch-sass
+3. Attempt to install brunch-sass (Error occurs here)
 ```
-npm install brunch-sass --save-dev
+npm install sass-brunch --save-dev
 ```
-
-^Error occurs here
 
 4. Install bootstrap
 ```
