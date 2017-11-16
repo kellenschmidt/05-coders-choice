@@ -27,7 +27,7 @@ git clone https://github.com/kellenschmidt/05-coders-choice/
 
 4. Install db dependencies
 ```
-cd homework_board/apps/db/
+cd 05-coders-choice/homework_board/apps/db/
 mix deps.get
 ```
 
@@ -89,7 +89,7 @@ available for download from GitHub. The current version of node-sass is 4.6.1 an
 lists version 4.5.3 as a dependency, so you would think that when npm tries to install sass-brunch it would install
 the dependency node-sass v4.5.3, but instead it tries to download node-sass v3.8 for a reason I do not understand.
 
-### Steps to reproduce brunch-sass error
+### Steps to reproduce sass-brunch error
 1. Clone repository
 ```
 git clone https://github.com/kellenschmidt/05-coders-choice/
@@ -97,7 +97,7 @@ git clone https://github.com/kellenschmidt/05-coders-choice/
 
 2. Move to frontend assets folder
 ```
-cd homework_board/apps/frontend/assets/
+cd 05-coders-choice/homework_board/apps/frontend/assets/
 ```
 
 3. Attempt to install brunch-sass (Error occurs here)
