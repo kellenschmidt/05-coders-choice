@@ -15,3 +15,5 @@
 
   <%= submit "Submit" %>
 <% end %>
+
+<%= button("Assignment List", to: "/list", method: "get", class: "btn btn-success") %>

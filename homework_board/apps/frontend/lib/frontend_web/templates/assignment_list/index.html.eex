@@ -1,5 +1,33 @@
-<h1>Assignment list is working</h1>
+<%= button("Add Assignment", to: "/new", method: "get", class: "btn btn-primary float-right") %>
+<h1>My Assignments</h1>
 
-<%= for assignment <- assignment_list() do %>
-  <%= render "assignment.html", assignment: assignment %>
-<% end %>
+<div class="row no-gutters">
+  
+  <div class="card text-white bg-primary mb-3 col-sm-4">
+    <div class="card-header">Upcoming</div>
+    <div class="card-body">
+      <%= for assignment <- assignment_list() do %>
+        <%= render "assignment.html", assignment: assignment %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card text-white bg-info mb-3 col-sm-4">
+    <div class="card-header">In progress</div>
+    <div class="card-body">
+      <%= for assignment <- assignment_list() do %>
+        <%= render "assignment.html", assignment: assignment %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card text-white bg-success mb-3 col-sm-4">
+    <div class="card-header">Completed</div>
+    <div class="card-body">
+      <%= for assignment <- assignment_list() do %>
+        <%= render "assignment.html", assignment: assignment %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
