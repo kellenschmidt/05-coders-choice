@@ -5,16 +5,30 @@ defmodule FrontendWeb.AssignmentListView do
     Db.Assignments.get_assignments()
   end
 
-  def getTitle(%Db.Assignments{title: title}) do
+  def columns() do
+    [ %{header: "Upcoming", background: "primary"},
+      %{header: "In progress", background: "success"},
+      %{header: "Completed", background: "info"} ]
+  end
+
+  def get_title(%Db.Assignments{title: title}) do
     title
   end
 
-  def getDescription(%Db.Assignments{description: description}) do
+  def get_description(%Db.Assignments{description: description}) do
     description
   end
 
-  def getPriority(%Db.Assignments{priority: priority}) do
+  def get_priority(%Db.Assignments{priority: priority}) do
     priority
+  end
+
+  def get_header(%{header: header}) do
+    header
+  end
+
+  def get_background(%{background: background}) do
+    background
   end
 
 end

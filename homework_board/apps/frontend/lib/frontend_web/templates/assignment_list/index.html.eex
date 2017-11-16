@@ -3,31 +3,9 @@
 
 <div class="row no-gutters">
   
-  <div class="card text-white bg-primary mb-3 col-sm-4">
-    <div class="card-header">Upcoming</div>
-    <div class="card-body">
-      <%= for assignment <- assignment_list() do %>
-        <%= render "assignment.html", assignment: assignment %>
-      <% end %>
-    </div>
-  </div>
+  <%= for column <- columns() do %>
+    <%= render "assignments_column.html", column: column %>
+  <% end %>
 
-  <div class="card text-white bg-info mb-3 col-sm-4">
-    <div class="card-header">In progress</div>
-    <div class="card-body">
-      <%= for assignment <- assignment_list() do %>
-        <%= render "assignment.html", assignment: assignment %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="card text-white bg-success mb-3 col-sm-4">
-    <div class="card-header">Completed</div>
-    <div class="card-body">
-      <%= for assignment <- assignment_list() do %>
-        <%= render "assignment.html", assignment: assignment %>
-      <% end %>
-    </div>
-  </div>
 </div>
 

@@ -1,11 +1,8 @@
-<!-- <p>This is an assignment</p> -->
-<!-- <p> <%= inspect @assignment %> </p> -->
-<!-- <p>Title: <%= getTitle(@assignment) %>, Description: <%= getDescription(@assignment) %>, Priority: <%= getPriority(@assignment) %></p> -->
 <div class="card text-dark my-3">
   <div class="card-body">
-    <h4 class="card-title"><%= getTitle(@assignment) %></h4>
-    <h6 class="card-subtitle mb-2 text-muted"><%= getPriority(@assignment) %></h6>
-    <p class="card-text"><%= getDescription(@assignment) %></p>
+    <h4 class="card-title"><%= get_title(@assignment) %></h4>
+    <h6 class="card-subtitle mb-2 text-muted"><%= get_priority(@assignment) %></h6>
+    <p class="card-text"><%= get_description(@assignment) %></p>
     <%= link("Edit", to: "/new", method: "get", class: "card-link") %>
     <%= link("Mark completed", to: "/new", method: "get", class: "card-link") %>
   </div>
