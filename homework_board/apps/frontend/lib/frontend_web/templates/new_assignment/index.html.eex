@@ -4,6 +4,10 @@
   </label>
 
   <label>
+    Description: <%= textarea f, :description %>
+  </label>
+
+  <label>
     Priority: <%= select f, :priority, 1..10 %>
   </label>
 
