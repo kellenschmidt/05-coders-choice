@@ -14,7 +14,7 @@ defmodule Db.Assignments do
     |> Ecto.Changeset.validate_required([:title])
   end
 
-  def get_assignment() do
+  def get_assignments() do
     Db.Assignments
     |> Db.Repo.all
   end

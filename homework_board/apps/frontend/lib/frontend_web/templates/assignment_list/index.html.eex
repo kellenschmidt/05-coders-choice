@@ -1,1 +1,4 @@
-<p>Assignment list is working</p>
+<h1>Assignment list is working</h1>
+<%= for assignment <- assignment_list() do %>
+  <%= render "assignment.html", assignment: assignment %>
+<% end %>

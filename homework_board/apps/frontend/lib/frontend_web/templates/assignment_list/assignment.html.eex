@@ -1,0 +1,3 @@
+<!-- <p>This is an assignment</p> -->
+<!-- <p> <%= inspect @assignment %> </p> -->
+<p>Title: <%= getTitle(@assignment) %>, Description: <%= getDescription(@assignment) %>, Priority: <%= getPriority(@assignment) %></p>
