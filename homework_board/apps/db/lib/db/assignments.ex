@@ -25,8 +25,8 @@ defmodule Db.Assignments do
   end
 
   def add_assignment(assignment) do
-    changeset = Db.Assignments.changeset(assignment, %{})
-    Db.Repo.insert(changeset)
+    Db.Assignments.changeset(assignment)
+    |> Db.Repo.insert()
     |> handle_query_response
   end
 
@@ -37,8 +37,8 @@ defmodule Db.Assignments do
   end
 
   def update_assignment(assignment, newAssignment) do
-    changeset = Db.Assignments.changeset(assignment, newAssignment)
-    Db.Repo.update(changeset)
+    Db.Assignments.changeset(assignment, newAssignment)
+    |> Db.Repo.update()
     |> handle_query_response
   end
 
