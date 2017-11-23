@@ -4,7 +4,7 @@
 <div class="row no-gutters">
   
   <%= for column <- columns() do %>
-    <%= render "assignments_column.html", column: column %>
+    <%= render "assignments_column.html", column: column, conn: @conn %>
   <% end %>
 
 </div>

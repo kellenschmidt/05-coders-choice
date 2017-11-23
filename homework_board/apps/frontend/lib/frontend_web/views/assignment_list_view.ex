@@ -3,6 +3,7 @@ defmodule FrontendWeb.AssignmentListView do
 
   def assignment_list() do
     Db.Assignments.get_assignments()
+    |> IO.inspect
   end
 
   def columns() do
@@ -21,6 +22,10 @@ defmodule FrontendWeb.AssignmentListView do
 
   def get_priority(%Db.Assignments{priority: priority}) do
     priority
+  end
+
+  def get_assignment_num(%Db.Assignments{}) do
+    1
   end
 
   def get_header(%{header: header}) do

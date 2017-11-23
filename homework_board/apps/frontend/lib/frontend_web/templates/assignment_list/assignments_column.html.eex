@@ -3,7 +3,7 @@
     <div class="card-header"><%= get_header(@column) %></div>
       <div class="card-body">
       <%= for assignment <- assignment_list() do %>
-        <%= render "assignment.html", assignment: assignment %>
+        <%= render "assignment.html", assignment: assignment, conn: @conn %>
       <% end %>
     </div>
   </div>

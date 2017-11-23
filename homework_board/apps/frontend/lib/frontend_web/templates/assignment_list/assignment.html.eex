@@ -3,7 +3,7 @@
     <h4 class="card-title"><%= get_title(@assignment) %></h4>
     <h6 class="card-subtitle mb-2 text-muted"><%= get_priority(@assignment) %></h6>
     <p class="card-text"><%= get_description(@assignment) %></p>
-    <%= link("Edit", to: "/new", method: "get", class: "card-link") %>
+    <%= link("Edit", to: new_assignment_path(@conn, :edit, get_assignment_num(@assignment)), method: "get", class: "card-link") %>
     <%= link("Mark completed", to: "/new", method: "get", class: "card-link") %>
   </div>
 </div>
