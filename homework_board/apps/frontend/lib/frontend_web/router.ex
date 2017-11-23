@@ -19,6 +19,7 @@ defmodule FrontendWeb.Router do
     get "/", PageController, :index
     get "/new", NewAssignmentController, :index
     post "/new", NewAssignmentController, :create
+    put "/new", NewAssignmentController, :update
     get "/list", AssignmentListController, :index
     get "/edit/:assignment_num", NewAssignmentController, :edit
   end

@@ -24,8 +24,8 @@ defmodule FrontendWeb.AssignmentListView do
     priority
   end
 
-  def get_assignment_num(%Db.Assignments{}) do
-    1
+  def get_assignment_num(%Db.Assignments{id: id}) do
+    id
   end
 
   def get_header(%{header: header}) do

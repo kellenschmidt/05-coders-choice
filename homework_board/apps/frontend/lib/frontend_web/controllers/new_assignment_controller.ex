@@ -8,9 +8,10 @@ defmodule FrontendWeb.NewAssignmentController do
     |> render("index.html")
   end
 
-  def edit(conn, %{"assignment_num" => assignment_num} = params) do
-    
-    changeset = Db.Assignments.get_assignment(assignment_num)
+  def edit(conn, %{"assignment_num" => assignment_num} = _params) do
+    changeset = assignment_num
+    |> string_to_int()
+    |> Db.Assignments.get_assignment()
     |> Db.Assignments.changeset()
 
     conn
@@ -18,16 +19,23 @@ defmodule FrontendWeb.NewAssignmentController do
     |> render("index.html")
   end
 
-  def create(conn, %{"assignments" => assignment_param} = params) do
-    map_with_atoms = assignment_param
-    |> map_keys_from_string_to_atom()
-    
-    priority_as_str = map_with_atoms.priority
-    |> string_to_int()
-    
-    Map.merge(%Db.Assignments{}, map_with_atoms)
-    |> Map.put(:priority, priority_as_str)
+  def create(conn, %{"assignments" => assignment_param} = _params) do
+    formatted_map = assignment_param
+    |> format_map_with_ints()
+
+    Map.merge(Db.Assignments, formatted_map)
     |> Db.Assignments.add_assignment()
+
+    conn
+    |> render(FrontendWeb.AssignmentListView, "index.html")
+  end
+
+  def update(conn, %{"assignments" => assignment_param} = _params) do
+    updated_assignment = assignment_param
+    |> format_map_with_ints()
+    
+    Db.Assignments.get_assignment(updated_assignment.id)
+    |> Db.Assignments.update_assignment(updated_assignment)
 
     conn
     |> render(FrontendWeb.AssignmentListView, "index.html")
@@ -41,6 +49,19 @@ defmodule FrontendWeb.NewAssignmentController do
   defp string_to_int(string_param) when is_bitstring(string_param) do
     {int_representation, _} = Integer.parse(string_param)
     int_representation
+  end
+
+  defp format_map_with_ints(%{"priority" => priority_str, "id" => id_str} = assignment_map) do
+    priority_as_int = priority_str
+    |> string_to_int()
+
+    id_as_int = id_str
+    |> string_to_int()
+
+    assignment_map
+    |> map_keys_from_string_to_atom()
+    |> Map.put(:priority, priority_as_int)
+    |> Map.put(:id, id_as_int)
   end
 
 end
