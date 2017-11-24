@@ -41,6 +41,10 @@ defmodule Db.Columns do
       Db.Repo.delete(column)
       |> handle_query_response
     end
+
+    def delete_all_columns() do
+      Db.Repo.delete_all(Db.Columns)
+    end
   
     defp handle_query_response({ :ok, _changeset } = _response) do
       IO.puts "Successfully modified database"
