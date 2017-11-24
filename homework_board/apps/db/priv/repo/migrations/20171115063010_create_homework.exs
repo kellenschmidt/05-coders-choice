@@ -6,6 +6,7 @@ defmodule Db.Repo.Migrations.CreateAssignments do
       add :title, :string
       add :description, :string, default: ""
       add :priority, :integer, default: 0
+      add :column_id, :integer
     end
   end
 end

@@ -6,12 +6,13 @@ defmodule Db.Assignments do
     field :title, :string
     field :description, :string
     field :priority, :integer
+    field :column_id, :integer
   end
 
   def changeset(assignment, params \\ %{}) do
     assignment
-    |> Ecto.Changeset.cast(params, [:title, :description, :priority])
-    |> Ecto.Changeset.validate_required([:title])
+    |> Ecto.Changeset.cast(params, [:title, :description, :priority, :column_id])
+    |> Ecto.Changeset.validate_required([:title, :column_id])
   end
 
   def get_assignments() do
@@ -25,8 +26,8 @@ defmodule Db.Assignments do
   end
 
   def add_assignment(assignment) do
-    changeset = Db.Assignments.changeset(assignment, %{})
-    Db.Repo.insert(changeset)
+    Db.Assignments.changeset(assignment)
+    |> Db.Repo.insert()
     |> handle_query_response
   end
 
@@ -36,9 +37,15 @@ defmodule Db.Assignments do
     |> Db.Repo.all
   end
 
-  def update_assignment(assignment, newAssignment) do
-    changeset = Db.Assignments.changeset(assignment, newAssignment)
-    Db.Repo.update(changeset)
+  def get_assignments_for_column(column_id) when is_integer(column_id) do
+    Db.Assignments
+    |> Ecto.Query.where(column_id: ^column_id)
+    |> Db.Repo.all
+  end
+
+  def update_assignment(oldAssignment, newAssignment) do
+    Db.Assignments.changeset(oldAssignment, newAssignment)
+    |> Db.Repo.update()
     |> handle_query_response
   end
 
@@ -51,7 +58,6 @@ defmodule Db.Assignments do
     IO.puts "Successfully modified database"
   end
   defp handle_query_response({ :error, changeset } = _response) do
-    # Is raising an error proper in this situation?
     errors = Ecto.Changeset.traverse_errors(changeset, fn {msg, opts} ->
       Enum.reduce(opts, msg, fn {key, value}, acc ->
         String.replace(acc, "%{#{key}}", to_string(value))

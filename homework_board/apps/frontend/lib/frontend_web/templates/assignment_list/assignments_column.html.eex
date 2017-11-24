@@ -1,0 +1,10 @@
+<div class="col-sm-4">
+  <%= tag(:div, class: "card text-white bg-" <> get_color(@column) <> " mb-3 mx-2") %>
+    <div class="card-header"><%= get_title(@column) %></div>
+      <div class="card-body">
+      <%= for assignment <- assignments_for_column(@column) do %>
+        <%= render "assignment.html", assignment: assignment, conn: @conn %>
+      <% end %>
+    </div>
+  </div>
+</div>
