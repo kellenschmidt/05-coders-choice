@@ -36,8 +36,14 @@ defmodule Db.Assignments do
     |> Db.Repo.all
   end
 
-  def update_assignment(assignment, newAssignment) do
-    Db.Assignments.changeset(assignment, newAssignment)
+  def get_all_for_column(column_id) when is_integer(column_id) do
+    Db.Assignments
+    |> Ecto.Query.where(column: ^column_id)
+    |> Db.Repo.all
+  end
+
+  def update_assignment(oldAssignment, newAssignment) do
+    Db.Assignments.changeset(oldAssignment, newAssignment)
     |> Db.Repo.update()
     |> handle_query_response
   end
@@ -51,7 +57,6 @@ defmodule Db.Assignments do
     IO.puts "Successfully modified database"
   end
   defp handle_query_response({ :error, changeset } = _response) do
-    # Is raising an error proper in this situation?
     errors = Ecto.Changeset.traverse_errors(changeset, fn {msg, opts} ->
       Enum.reduce(opts, msg, fn {key, value}, acc ->
         String.replace(acc, "%{#{key}}", to_string(value))

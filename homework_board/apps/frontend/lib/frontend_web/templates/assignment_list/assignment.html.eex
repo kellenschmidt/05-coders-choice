@@ -1,4 +1,4 @@
-<div class="card text-dark my-3">
+<div class="card text-dark mb-3">
   <div class="card-body">
     <h4 class="card-title"><%= get_title(@assignment) %></h4>
     <h6 class="card-subtitle mb-2 text-muted"><%= get_priority(@assignment) %></h6>
