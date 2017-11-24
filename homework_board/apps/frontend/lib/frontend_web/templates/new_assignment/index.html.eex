@@ -13,6 +13,10 @@
     Priority: <%= select f, :priority, 0..10 %>
   </label>
 
+  <label>
+    Column: <%= select f, :column_id, Enum.map(get_columns(), &{&1.title, &1.id}) %>
+  </label>
+
   <%= hidden_input f, :id %>
 
   <%= submit "Save" %>

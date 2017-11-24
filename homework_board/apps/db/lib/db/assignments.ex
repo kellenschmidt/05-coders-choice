@@ -6,12 +6,13 @@ defmodule Db.Assignments do
     field :title, :string
     field :description, :string
     field :priority, :integer
+    field :column_id, :integer
   end
 
   def changeset(assignment, params \\ %{}) do
     assignment
-    |> Ecto.Changeset.cast(params, [:title, :description, :priority])
-    |> Ecto.Changeset.validate_required([:title])
+    |> Ecto.Changeset.cast(params, [:title, :description, :priority, :column_id])
+    |> Ecto.Changeset.validate_required([:title, :column_id])
   end
 
   def get_assignments() do
@@ -36,9 +37,9 @@ defmodule Db.Assignments do
     |> Db.Repo.all
   end
 
-  def get_all_for_column(column_id) when is_integer(column_id) do
+  def get_assignments_for_column(column_id) when is_integer(column_id) do
     Db.Assignments
-    |> Ecto.Query.where(column: ^column_id)
+    |> Ecto.Query.where(column_id: ^column_id)
     |> Db.Repo.all
   end
 

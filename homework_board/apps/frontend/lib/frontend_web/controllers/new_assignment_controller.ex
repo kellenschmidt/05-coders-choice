@@ -21,9 +21,11 @@ defmodule FrontendWeb.NewAssignmentController do
 
   def create(conn, %{"assignments" => assignment_param} = _params) do
     formatted_map = assignment_param
+    |> Map.delete("id")
     |> format_map_with_ints()
+    
 
-    Map.merge(Db.Assignments, formatted_map)
+    Map.merge(%Db.Assignments{}, formatted_map)
     |> Db.Assignments.add_assignment()
 
     conn
@@ -51,17 +53,27 @@ defmodule FrontendWeb.NewAssignmentController do
     int_representation
   end
 
-  defp format_map_with_ints(%{"priority" => priority_str, "id" => id_str} = assignment_map) do
-    priority_as_int = priority_str
-    |> string_to_int()
-
-    id_as_int = id_str
-    |> string_to_int()
-
+  defp format_map_with_ints(%{"id" => id_str, "priority" => priority_str, "column_id" => column_id_str} = assignment_map) do
     assignment_map
+    |> to_int_and_add_to_map("id", id_str)
+    |> to_int_and_add_to_map("priority", priority_str)
+    |> to_int_and_add_to_map("column_id", column_id_str)
     |> map_keys_from_string_to_atom()
-    |> Map.put(:priority, priority_as_int)
-    |> Map.put(:id, id_as_int)
+  end
+
+  defp format_map_with_ints(%{"priority" => priority_str, "column_id" => column_id_str} = assignment_map) do
+    assignment_map
+    |> to_int_and_add_to_map("priority", priority_str)
+    |> to_int_and_add_to_map("column_id", column_id_str)
+    |> map_keys_from_string_to_atom()
+  end
+
+  defp to_int_and_add_to_map(map, key, value_str) do
+    value_as_int = value_str
+    |> string_to_int()
+
+    map
+    |> Map.put(key, value_as_int)
   end
 
 end

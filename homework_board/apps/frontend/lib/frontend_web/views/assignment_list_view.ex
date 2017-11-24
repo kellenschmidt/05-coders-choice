@@ -1,18 +1,15 @@
 defmodule FrontendWeb.AssignmentListView do
   use FrontendWeb, :view
 
-  def assignment_list() do
-    Db.Assignments.get_assignments()
-    |> IO.inspect
+  def assignments_for_column(column) do
+    Db.Assignments.get_assignments_for_column(column.id)
   end
 
   def columns() do
-    [ %{header: "Upcoming", background: "primary"},
-      %{header: "In progress", background: "success"},
-      %{header: "Completed", background: "info"} ]
+    Db.Columns.get_columns()
   end
 
-  def get_title(%Db.Assignments{title: title}) do
+  def get_title(%{title: title}) do
     title
   end
 
@@ -28,12 +25,8 @@ defmodule FrontendWeb.AssignmentListView do
     id
   end
 
-  def get_header(%{header: header}) do
-    header
-  end
-
-  def get_background(%{background: background}) do
-    background
+  def get_color(%Db.Columns{color: color}) do
+    color
   end
 
 end
