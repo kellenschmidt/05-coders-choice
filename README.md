@@ -60,10 +60,11 @@ mix phx.server
 * Web interface displays assignments based on their associated column
 * Web interface can add new assignments to the database
 * Web interface can edit existing assignments
+* Web interface can create, update, and remove labels as well as assign them to assignments
 
 ## To be completed before project submission
 
-* Add more properties to the assignments (due date, labels for class name)
+* Add due date property to assignments
 * Organize assignments in columns by due date and priority
 * Mark assignments as completed
 * Apply more bootstrap and other styling to interface to make it beautiful
