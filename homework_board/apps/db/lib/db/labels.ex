@@ -7,8 +7,8 @@ defmodule Db.Labels do
       field :color, :string
     end
   
-    def changeset(assignment, params \\ %{}) do
-      assignment
+    def changeset(label, params \\ %{}) do
+      label
       |> Ecto.Changeset.cast(params, [:title, :color])
       |> Ecto.Changeset.validate_required([:title, :color])
     end
@@ -18,7 +18,7 @@ defmodule Db.Labels do
       |> Db.Repo.all
     end
   
-    def get_labels(id) when is_integer(id) do
+    def get_label(id) when is_integer(id) do
       Db.Labels
       |> Db.Repo.get(id)
     end
@@ -30,7 +30,7 @@ defmodule Db.Labels do
     end
 
     def update_label(oldLabel, newLabel) do
-      Db.Assignments.changeset(oldLabel, newLabel)
+      Db.Labels.changeset(oldLabel, newLabel)
       |> Db.Repo.update()
       |> handle_query_response
     end

@@ -20,7 +20,7 @@ defmodule Db.Columns do
       |> Db.Repo.all
     end
   
-    def get_columns(id) when is_integer(id) do
+    def get_column(id) when is_integer(id) do
       Db.Columns
       |> Db.Repo.get(id)
     end
