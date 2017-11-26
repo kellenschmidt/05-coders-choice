@@ -27,3 +27,4 @@
 <% end %>
 
 <%= button("Assignment List", to: "/list", method: "get", class: "btn btn-success") %>
+<%= button("Edit Labels", to: "/labels", method: "get", class: "btn btn-info") %>

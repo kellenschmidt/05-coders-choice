@@ -44,4 +44,5 @@
 </li>
 </ul>
 
-<%= link("Delete All", [to: "/labels", method: :delete]) %>
+<%= button("Delete All", to: "/labels", method: "delete", class: "btn btn-danger") %>
+<%= button("Assignment List", to: "/list", method: "get", class: "btn btn-success") %>
