@@ -22,6 +22,7 @@ defmodule FrontendWeb.Router do
     put "/new", NewAssignmentController, :update
     get "/list", AssignmentListController, :index
     get "/edit/:assignment_num", NewAssignmentController, :edit
+    get "/labels", EditLabelsController, :index
   end
 
   # Other scopes may use custom stacks.
