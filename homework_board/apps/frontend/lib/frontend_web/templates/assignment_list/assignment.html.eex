@@ -3,7 +3,7 @@
     <h4 class="card-title"><%= get_title(@assignment) %><%= content_tag(:span, get_priority(@assignment), [class: "badge badge-" <> get_color(@column) <> " ml-2"]) %></span></h4>
     <div>
       <%= for label <- get_labels(@assignment) do %>
-        <%= content_tag(:span, get_title(label), [class: "badge badge-pill badge-" <> get_color(label) <> " ml-2"]) %>
+        <%= content_tag(:span, get_title(label), [class: "badge badge-pill badge-" <> get_color(label) <> " p-2 mb-2 mr-1"]) %>
       <% end %>
     </div>
     <p class="card-text"><%= get_description(@assignment) %></p>
