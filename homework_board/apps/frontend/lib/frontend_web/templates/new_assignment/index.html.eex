@@ -14,7 +14,11 @@
   </label>
 
   <label>
-    Column: <%= select f, :column_id, Enum.map(get_columns(), &{&1.title, &1.id}) %>
+    Column: <%= select f, :column_id, get_columns_list() %>
+  </label>
+
+  <label>
+    Labels: <%= multiple_select f, :labels, get_labels_list(), [disabled: is_disabled()] %>
   </label>
 
   <%= hidden_input f, :id %>
@@ -23,3 +27,4 @@
 <% end %>
 
 <%= button("Assignment List", to: "/list", method: "get", class: "btn btn-success") %>
+<%= button("Edit Labels", to: "/labels", method: "get", class: "btn btn-info") %>

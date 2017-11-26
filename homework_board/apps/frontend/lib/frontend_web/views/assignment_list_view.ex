@@ -3,10 +3,21 @@ defmodule FrontendWeb.AssignmentListView do
 
   def assignments_for_column(column) do
     Db.Assignments.get_assignments_for_column(column.id)
+    |> IO.inspect
   end
 
   def columns() do
     Db.Columns.get_columns()
+  end
+
+  def get_labels(%Db.Assignments{labels: labels}) do
+    labels
+    |> handle_empty_labels
+  end
+
+  def get_title(label_id) when is_integer(label_id) do
+    Db.Labels.get_label(label_id)
+    |> get_title()
   end
 
   def get_title(%{title: title}) do
@@ -25,8 +36,21 @@ defmodule FrontendWeb.AssignmentListView do
     id
   end
 
-  def get_color(%Db.Columns{color: color}) do
+  def get_color(label_id) when is_integer(label_id) do
+    Db.Labels.get_label(label_id)
+    |> get_color()
+  end
+
+  def get_color(%{color: color}) do
     color
+  end
+
+  defp handle_empty_labels(nil = _labels) do
+    []
+  end
+
+  defp handle_empty_labels(labels) do
+    labels
   end
 
 end
