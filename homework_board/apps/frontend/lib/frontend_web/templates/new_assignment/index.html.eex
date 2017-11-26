@@ -18,7 +18,7 @@
   </label>
 
   <label>
-    Labels: <%= multiple_select f, :labels, get_labels_list() %>
+    Labels: <%= multiple_select f, :labels, get_labels_list(), [disabled: is_disabled()] %>
   </label>
 
   <%= hidden_input f, :id %>

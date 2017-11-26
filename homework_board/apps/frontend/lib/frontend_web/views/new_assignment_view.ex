@@ -16,16 +16,29 @@ defmodule FrontendWeb.NewAssignmentView do
   end
 
   def get_labels_list() do
-    Db.Assignments.get_assignments()
-    |> handle_empty_assignments()
+    Db.Labels.get_labels()
+    |> handle_empty_labels()
     |> Enum.map(&{&1.title, &1.id})
   end
   
-  defp handle_empty_assignments({0, nil} = _empty_map) do
-    %{}
+  defp handle_empty_labels({0, nil} = _empty_map) do
+    [ %{title: "No labels created yet", id: -1} ]
   end
 
-  defp handle_empty_assignments(not_empty_map) do
+  defp handle_empty_labels(not_empty_map) do
     not_empty_map
   end
+
+  def is_disabled() do
+    Db.Labels.get_labels()
+    |> are_labels_empty()
+  end
+
+  defp are_labels_empty({0, nil} = _empty_map) do
+    true
+  end
+  defp are_labels_empty(_not_empty_map) do
+    false
+  end
+
 end
