@@ -1,1 +1,47 @@
-<p>Edit labels is working</p>
+<h1>Edit Labels</h1>
+<ul class="list-group">
+<%= for label <- get_labels() do %>
+    <%= tag(:li, [class: "list-group-item list-group-item-" <> get_color(label)] )%>
+    <%= form_for get_changeset_for_label(label), edit_labels_path(@conn, :update), fn f -> %>
+    <div class="row">
+        <div class="col-6">
+        Title: <%= text_input f, :title %>
+        </div>
+
+        <div class="col-4">
+        Color: <%= select f, :color, Enum.map(get_colors(), &{&1.disp_name, &1.bs_color}) %>
+        </div>
+
+        <%= hidden_input f, :id %>
+
+        <div class="col-2">
+        <%= submit "Save" %>
+        </div>
+
+    </div>
+    <% end %>
+    </li>
+<% end %>
+<li class="list-group-item">
+<%= form_for @changeset, edit_labels_path(@conn, :create), fn f -> %>
+    <div class="row">
+        <div class="col-6">
+        Title: <%= text_input f, :title %>
+        </div>
+
+        <div class="col-4">
+        Color: <%= select f, :color, Enum.map(get_colors(), &{&1.disp_name, &1.bs_color}) %>
+        </div>
+
+        <%= hidden_input f, :id %>
+
+        <div class="col-2">
+        <%= submit "Add New" %>
+        </div>
+
+    </div>
+    <% end %>
+</li>
+</ul>
+
+<%= link("Delete All", [to: "/labels", method: :delete]) %>

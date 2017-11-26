@@ -1,8 +1,16 @@
 defmodule FrontendWeb.NewAssignmentView do
   use FrontendWeb, :view
 
-  def get_columns_list() do
+  def get_labels() do
+    Db.Labels.get_labels()
+  end
+
+  def get_columns() do
     Db.Columns.get_columns()
+  end
+
+  def get_columns_list() do
+    get_columns()
     |> handle_empty_columns()
     |> Enum.map(&{&1.title, &1.id})
   end
@@ -16,7 +24,7 @@ defmodule FrontendWeb.NewAssignmentView do
   end
 
   def get_labels_list() do
-    Db.Labels.get_labels()
+    get_labels()
     |> handle_empty_labels()
     |> Enum.map(&{&1.title, &1.id})
   end
@@ -30,7 +38,7 @@ defmodule FrontendWeb.NewAssignmentView do
   end
 
   def is_disabled() do
-    Db.Labels.get_labels()
+    get_labels()
     |> are_labels_empty()
   end
 

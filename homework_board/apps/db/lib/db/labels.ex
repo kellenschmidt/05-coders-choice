@@ -39,6 +39,11 @@ defmodule Db.Labels do
       Db.Repo.delete(label)
       |> handle_query_response
     end
+
+    def delete_all() do
+      Db.Labels
+      |> Db.Repo.delete_all()
+    end
   
     defp handle_query_response({ :ok, _changeset } = _response) do
       IO.puts "Successfully modified database"

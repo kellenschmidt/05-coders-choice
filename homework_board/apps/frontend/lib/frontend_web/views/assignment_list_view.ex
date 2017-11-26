@@ -3,6 +3,7 @@ defmodule FrontendWeb.AssignmentListView do
 
   def assignments_for_column(column) do
     Db.Assignments.get_assignments_for_column(column.id)
+    |> IO.inspect
   end
 
   def columns() do
