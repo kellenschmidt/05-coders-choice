@@ -14,7 +14,11 @@
   </label>
 
   <label>
-    Column: <%= select f, :column_id, Enum.map(get_columns(), &{&1.title, &1.id}) %>
+    Column: <%= select f, :column_id, get_columns_list() %>
+  </label>
+
+  <label>
+    Labels: <%= multiple_select f, :labels, get_labels_list() %>
   </label>
 
   <%= hidden_input f, :id %>
