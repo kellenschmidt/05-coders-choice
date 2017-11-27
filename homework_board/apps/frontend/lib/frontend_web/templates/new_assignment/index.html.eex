@@ -1,8 +1,8 @@
-<%= if assigns[:assignment_num] do %>
+<% if assigns[:assignment_num] do %>
   <h1 class="mb-4">Edit Assignment</h1>
-<%= else %>
+<% else %>
   <h1 class="mb-4">New Assignment</h1>
-<%= end %>
+<% end %>
 
 <%= form_for @changeset, new_assignment_path(@conn, :index), fn f -> %>
   <div class="form-group">
@@ -42,8 +42,8 @@
   <%= submit("Save", class: "btn btn-block btn-primary mb-2 mt-5") %>
 <% end %>
 
-<%= if assigns[:assignment_num] do %>
+<% if assigns[:assignment_num] do %>
   <%= button("Delete Assignment", to: new_assignment_path(@conn, :delete, @assignment_num), method: "delete", class: "btn btn-block btn-danger") %>
-<%= end %>
+<% end %>
 
 <%= button("Assignments List", to: "/list", method: "get", class: "btn btn-block btn-success") %>
