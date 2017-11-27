@@ -1,5 +1,5 @@
-<%= button("Add Assignment", to: "/new", method: "get", class: "btn btn-primary float-right mt-2") %>
-<h1 class="mb-4">My Assignments</h1>
+<%= button("Add Assignment", to: "/new", method: "get", class: "btn btn-primary float-right mt-2 mr-2") %>
+<h1 class="mb-4 ml-2">My Assignments</h1>
 
 <div class="row no-gutters">
   
