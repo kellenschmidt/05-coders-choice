@@ -2,10 +2,10 @@
 
 Homework Board is an application for tracking your homework over the course of a semester.
 Homework Board lets you input your homework assignments and then helps you keep track of
-those assignments. Specific features TBD (but they will be cool!).
+those assignments. Homework Board enables you to categorize assignments and visualize due dates
+and progress.
 
-I'm having a ton of fun with the assignment so far and I'm really excited to put in a ton of
-work on it in the next week.
+I had an absolute blast creating Homework Board and I hope you enjoy it as much as I do!
 
 ## Running project locally
 
@@ -52,22 +52,20 @@ cd ../
 mix phx.server
 ```
 
-## What works right now
+## Features
+* PostgeSQL Database
+    * Completely decoupled from the web interface.
+    * Connection is spawned and monitored by a supervisor.
+    * Contains three unique tables and associated schemas for assignments, columns, and labels.
+    * CRUD functions implemented for each schema.
+    
+* Phoenix Web Interface
+    * Can read and display assignments from database, organized by column, and sorted by due date.
+    * Can add new assignments and edit existing assignments.
+    * Can create labels, edit, and remove labels as well as attach them to assignments.
+    * Can add due dates to assignments.
+    * Styled beautifully with Bootstrap.
 
-* PostgreSQL database is created and running
-* 3 tables with functions to preform CRUD operations
-* Web interface can read and display assignments from the database
-* Web interface displays assignments based on their associated column
-* Web interface can add new assignments to the database
-* Web interface can edit existing assignments
-* Web interface can create, update, and remove labels as well as assign them to assignments
-
-## To be completed before project submission
-
-* Add due date property to assignments
-* Organize assignments in columns by due date and priority
-* Mark assignments as completed
-* Apply more bootstrap and other styling to interface to make it beautiful
-
-## Stretch goals
+## Future goals
 * Add ability to create subtasks for each assignment which the user can check off as they complete them
+* Add ability to customize assignment columns
