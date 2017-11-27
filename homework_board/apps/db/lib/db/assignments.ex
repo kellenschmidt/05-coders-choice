@@ -8,11 +8,12 @@ defmodule Db.Assignments do
     field :priority, :integer
     field :column_id, :integer
     field :labels, {:array, :integer}
+    field :due_date, :naive_datetime
   end
 
   def changeset(assignment, params \\ %{}) do
     assignment
-    |> Ecto.Changeset.cast(params, [:title, :description, :priority, :column_id, :labels])
+    |> Ecto.Changeset.cast(params, [:title, :description, :priority, :column_id, :labels, :due_date])
     |> Ecto.Changeset.validate_required([:title, :column_id])
   end
 

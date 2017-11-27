@@ -23,7 +23,7 @@ defmodule FrontendWeb.NewAssignmentController do
     formatted_map = assignment_param
     |> Map.delete("id")
     |> format_map_with_ints()
-    
+    |> format_date()
 
     Map.merge(%Db.Assignments{}, formatted_map)
     |> Db.Assignments.add_assignment()
@@ -35,6 +35,7 @@ defmodule FrontendWeb.NewAssignmentController do
   def update(conn, %{"assignments" => assignment_param} = _params) do
     updated_assignment = assignment_param
     |> format_map_with_ints()
+    |> format_date()
     
     Db.Assignments.get_assignment(updated_assignment.id)
     |> Db.Assignments.update_assignment(updated_assignment)
@@ -96,6 +97,28 @@ defmodule FrontendWeb.NewAssignmentController do
   defp to_int(list_param) when is_list(list_param) do
     list_param
     |> Enum.map(&to_int/1)
+  end
+
+  defp to_int(map_param) when is_map(map_param) do
+    map_param
+    |> Enum.reduce(%{}, fn ({key, val}, acc) -> Map.put(acc, key, to_int(val)) end)
+  end
+
+  defp create_naive_datetime(%{} = datetime_param) do
+    %{year: year, month: month, day: day, hour: hour, minute: minute} = datetime_param
+    |> map_keys_from_string_to_atom()
+    |> to_int()
+
+    {:ok, naive_datetime} = NaiveDateTime.new(year, month, day, hour, minute, 0)
+    naive_datetime
+  end
+
+  defp format_date(%{due_date: date_map} = assignment_param) do
+    naive_datetime = date_map
+    |> create_naive_datetime()
+
+    assignment_param
+    |> Map.put(:due_date, naive_datetime)
   end
 
 end

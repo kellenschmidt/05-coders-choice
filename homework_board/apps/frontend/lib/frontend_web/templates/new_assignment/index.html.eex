@@ -21,6 +21,10 @@
     Labels: <%= multiple_select f, :labels, get_labels_list(), [disabled: is_disabled()] %>
   </label>
 
+  <label>
+    Due Date: <%= datetime_select f, :due_date %>
+  </label>
+
   <%= hidden_input f, :id %>
 
   <%= submit "Save" %>

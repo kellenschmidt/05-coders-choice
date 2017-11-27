@@ -8,6 +8,7 @@ defmodule Db.Repo.Migrations.CreateAssignments do
       add :priority, :integer, default: 0
       add :column_id, :integer
       add :labels, {:array, :integer}
+      add :due_date, :naive_datetime
     end
   end
 end
