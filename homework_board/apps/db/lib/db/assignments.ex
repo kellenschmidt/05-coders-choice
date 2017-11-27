@@ -42,6 +42,7 @@ defmodule Db.Assignments do
   def get_assignments_for_column(column_id) when is_integer(column_id) do
     Db.Assignments
     |> Ecto.Query.where(column_id: ^column_id)
+    |> Ecto.Query.order_by(asc: :due_date, desc: :priority)
     |> Db.Repo.all
   end
 
