@@ -10,22 +10,19 @@
     <title>Homework Board</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="shortcut icon" href="<%= static_path(@conn, "/images/favicon.png") %>" type="image/x-icon">
     <style>
-      .title-page-wallpaper {
-        background-image: url(<%= static_path(@conn, "/images/background-050.png") %>);
-        position: relative;
+      body { 
+        background: url(<%= static_path(@conn, "/images/background-050.png") %>) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
         background-size: cover;
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        overflow: hidden;
-        height: 100vh;
-        width: 100%;
       }
     </style>
   </head>
 
-  <body class="title-page-wallpaper">
+  <body>
     <div class="container bg-white">
 
       <main role="main" class="pt-4">
