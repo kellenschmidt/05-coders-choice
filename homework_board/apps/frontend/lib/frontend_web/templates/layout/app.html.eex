@@ -15,7 +15,7 @@
   <body>
     <div class="container">
 
-      <main role="main">
+      <main role="main" class="mt-4">
         <%= render @view_module, @view_template, assigns %>
       </main>
 

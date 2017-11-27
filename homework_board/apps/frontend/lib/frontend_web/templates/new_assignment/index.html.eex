@@ -1,30 +1,41 @@
-<h1>Create new assignments</h1>
+<h1 class="mb-4">Edit Assignment</h1>
 
 <%= form_for @changeset, new_assignment_path(@conn, :index), fn f -> %>
-  <label>
-    Title: <%= text_input f, :title %>
-  </label>
+  <div class="form-group">
+    <label for="title-input">Title:</label>
+    <%= text_input f, :title, [class: "form-control", id: "title-input"] %>
+  </div>
 
-  <label>
-    Description: <%= textarea f, :description %>
-  </label>
-
-  <label>
-    Column: <%= select f, :column_id, get_columns_list() %>
-  </label>
-
-  <label>
-    Labels: <%= multiple_select f, :labels, get_labels_list(), [disabled: is_disabled()] %>
-  </label>
-
-  <label>
-    Due Date: <%= datetime_select f, :due_date %>
-  </label>
-
+  <div class="form-group">
+    <label for="description-input">Description:</label>
+    <%= textarea f, :description, [class: "form-control", id: "description-input"] %>
+  </div>
+  
+  <div class="form-group">
+    <label for="column-input">Column:</label>
+    <%= select f, :column_id, get_columns_list(), [class: "form-control", id: "column-input"] %>
+  </div>
+  
+  <div class="form-group row">
+    <div class="col-10">
+      <label for="labels-input">Labels:</label>
+      <%= multiple_select f, :labels, get_labels_list(), [disabled: is_disabled(), class: "form-control", id: "labels-input"] %>
+      <small id="labelsHelp" class="form-text text-muted">Use ctrl/cmd and shift keys to select multiple labels.</small>
+    </div>
+    <div class="col-2 align-self-center">
+      <%= button("Edit Labels", to: "/labels", method: "get", class: "btn btn-block btn-info") %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="duedate-input">Due Date:</label>
+    <br>
+    <%= datetime_select f, :due_date, [class: "form-control", id: "duedate-input"] %>
+  </div>
+  
   <%= hidden_input f, :id %>
 
-  <%= submit "Save" %>
+  <%= submit("Save", class: "btn btn-block btn-primary mb-2 mt-5") %>
 <% end %>
 
-<%= button("Assignment List", to: "/list", method: "get", class: "btn btn-success") %>
-<%= button("Edit Labels", to: "/labels", method: "get", class: "btn btn-info") %>
+<%= button("Assignments List", to: "/list", method: "get", class: "btn btn-block btn-success") %>
