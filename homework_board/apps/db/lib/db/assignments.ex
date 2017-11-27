@@ -5,14 +5,14 @@ defmodule Db.Assignments do
   schema "assignments" do
     field :title, :string
     field :description, :string
-    field :priority, :integer
     field :column_id, :integer
     field :labels, {:array, :integer}
+    field :due_date, :naive_datetime
   end
 
   def changeset(assignment, params \\ %{}) do
     assignment
-    |> Ecto.Changeset.cast(params, [:title, :description, :priority, :column_id, :labels])
+    |> Ecto.Changeset.cast(params, [:title, :description, :column_id, :labels, :due_date])
     |> Ecto.Changeset.validate_required([:title, :column_id])
   end
 
@@ -32,15 +32,10 @@ defmodule Db.Assignments do
     |> handle_query_response
   end
 
-  def get_all_with_priority(priority) when is_integer(priority) do
-    Db.Assignments
-    |> Ecto.Query.where(priority: ^priority)
-    |> Db.Repo.all
-  end
-
   def get_assignments_for_column(column_id) when is_integer(column_id) do
     Db.Assignments
     |> Ecto.Query.where(column_id: ^column_id)
+    |> Ecto.Query.order_by(asc: :due_date)
     |> Db.Repo.all
   end
 

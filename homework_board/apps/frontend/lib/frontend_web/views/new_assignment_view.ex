@@ -33,6 +33,10 @@ defmodule FrontendWeb.NewAssignmentView do
     [ %{title: "No labels created yet", id: -1} ]
   end
 
+  defp handle_empty_labels([] = _empty_map) do
+    [ %{title: "No labels created yet", id: -1} ]
+  end
+
   defp handle_empty_labels(not_empty_map) do
     not_empty_map
   end
@@ -43,6 +47,9 @@ defmodule FrontendWeb.NewAssignmentView do
   end
 
   defp are_labels_empty({0, nil} = _empty_map) do
+    true
+  end
+  defp are_labels_empty([] = _empty_map) do
     true
   end
   defp are_labels_empty(_not_empty_map) do

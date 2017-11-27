@@ -38,10 +38,10 @@ defmodule FrontendWeb.EditLabelsView do
     |> List.insert_at(0, %{disp_name: "Gray", bs_color: "secondary"})
     |> List.insert_at(0, %{disp_name: "Black", bs_color: "dark"})
     |> List.insert_at(0, %{disp_name: "Teal", bs_color: "info"})
-    |> List.insert_at(0, %{disp_name: "Orange", bs_color: "warning"})
+    |> List.insert_at(0, %{disp_name: "Yellow", bs_color: "warning"})
     |> List.insert_at(0, %{disp_name: "Red", bs_color: "danger"})
     |> List.insert_at(0, %{disp_name: "Green", bs_color: "success"})
-    |> List.insert_at(0, %{disp_name: "Blue", bs_color: "primary"})    
+    |> List.insert_at(0, %{disp_name: "Blue", bs_color: "primary"})
   end
 
 end

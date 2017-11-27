@@ -1,4 +1,4 @@
-<h1>Edit Labels</h1>
+<h1 class="mb-4">Edit Labels</h1>
 <ul class="list-group">
 <%= for label <- get_labels() do %>
   <%= tag(:li, [class: "list-group-item list-group-item-" <> get_color(label)] )%>
@@ -45,5 +45,6 @@
   </li>
 </ul>
 
-<%= button("Delete All", to: "/labels", method: "delete", class: "btn btn-danger") %>
-<%= button("Assignment List", to: "/list", method: "get", class: "btn btn-success") %>
+<%= button("Assignments List", to: "/list", method: "get", class: "btn btn-block btn-success mb-2 mt-5") %>
+<%= button("Delete All", to: "/labels", method: "delete", class: "btn btn-block btn-danger") %>
+

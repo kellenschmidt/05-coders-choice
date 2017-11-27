@@ -7,15 +7,25 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Frontend!</title>
+    <title>Homework Board</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="shortcut icon" href="<%= static_path(@conn, "/images/favicon.png") %>" type="image/x-icon">
+    <style>
+      body { 
+        background: url(<%= static_path(@conn, "/images/background-050.png") %>) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+    </style>
   </head>
 
   <body>
-    <div class="container">
+    <div class="container bg-white">
 
-      <main role="main">
+      <main role="main" class="my-5 mx-2 pt-4 pb-5">
         <%= render @view_module, @view_template, assigns %>
       </main>
 

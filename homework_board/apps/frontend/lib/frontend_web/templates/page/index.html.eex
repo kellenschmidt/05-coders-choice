@@ -1,36 +1,62 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+<div class="jumbotron row mx-1">
+  <div class="col-9">
+    <h2><%= gettext "Welcome to %{name}!", name: "Homework Board" %></h2>
+    <p class="lead">A productive web app for<br/>organizing and tracking your homework.</p>
+  </div>
+  <div class="col-3">
+    <%= button("Go To Homework Board!", to: "/list", method: "get", class: "btn btn-block btn-primary mb-2 mt-5") %>
+  </div>
 </div>
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
+<div class="row">
+  <div class="col-6">
+    <div class="card border-primary mb-3">
+      <div class="card-header">Features</div>
+      <div class="card-body text-primary">
+        <h4 class="card-title">PostgeSQL Database</h4>
+        <p class="card-text">Completely decoupled from the web interface.<p>
+        <p class="card-text">Connection is spawned and monitored by a supervisor.<p>
+        <p class="card-text">Contains three unique tables and associated schemas for assignments, columns, and labels.<p>
+        <p class="card-text">CRUD functions implemented for each schema.<p>
+      </div>
+      <div class="card-body text-primary">
+        <h4 class="card-title">Phoenix Web Interface</h4>
+        <p class="card-text">Can read and display assignments from database, organized by column, and sorted by due date.<p>
+        <p class="card-text">Can add new assignments and edit existing assignments.<p>
+        <p class="card-text">Can create labels, edit, and remove labels as well as attach them to assignments.<p>
+        <p class="card-text">Can add due dates to assignments.<p>
+        <p class="card-text">Styled beautifully with Bootstrap.<p>
+      </div>
+    </div>
   </div>
-
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
-      </li>
-    </ul>
+  <div class="col-6">
+    <div class="card border-success mb-3">
+      <div class="card-header">Resources</div>
+      <a href="https://github.com/kellenschmidt/05-coders-choice/blob/master/README.md" target="_blank">
+        <div class="card-body text-success">
+          <h4 class="card-title">Setup Guide</h4>
+          <p class="card-text">Download and run the project on your own machine.</p>
+        </div>
+      </a>
+      <a href="https://github.com/kellenschmidt/05-coders-choice" target="_blank">
+        <div class="card-body text-success">
+          <h4 class="card-title">Source Code</h4>
+          <p class="card-text">View the source code for the project.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="col-6">
+  </div>
+  <div class="col-6">
+    <div class="card border-danger mb-5">
+      <div class="card-header">Credits</div>
+      <a href="https://kellenschmidt.com" target="_blank">
+        <div class="card-body text-danger">
+          <h4 class="card-title">Created by Kellen Schmidt</h4>
+          <p class="card-text">Learn more about Kellen and his work on his website.</p>
+        </div>
+      </a>
+    </div>
   </div>
 </div>

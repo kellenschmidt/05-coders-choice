@@ -3,7 +3,6 @@ defmodule FrontendWeb.AssignmentListView do
 
   def assignments_for_column(column) do
     Db.Assignments.get_assignments_for_column(column.id)
-    |> IO.inspect
   end
 
   def columns() do
@@ -28,8 +27,22 @@ defmodule FrontendWeb.AssignmentListView do
     description
   end
 
-  def get_priority(%Db.Assignments{priority: priority}) do
-    priority
+  def get_due_date(%Db.Assignments{due_date: %{month: month, day: day, hour: hour, minute: minute}}) do
+    "#{month}/#{day} #{rem(hour, 12)}:#{get_zero_prefix(div(minute, 10))}#{minute} #{get_am_pm(div(hour, 12))}"
+  end
+
+  defp get_zero_prefix(0) do
+    "0"
+  end
+  defp get_zero_prefix(_) do
+    ""
+  end
+
+  defp get_am_pm(1) do
+    "pm"
+  end
+  defp get_am_pm(0) do
+    "am"
   end
 
   def get_assignment_num(%Db.Assignments{id: id}) do
