@@ -16,6 +16,7 @@ defmodule FrontendWeb.NewAssignmentController do
 
     conn
     |> assign(:changeset, changeset)
+    |> assign(:assignment_num, assignment_num)
     |> render("index.html")
   end
 
@@ -39,6 +40,16 @@ defmodule FrontendWeb.NewAssignmentController do
     
     Db.Assignments.get_assignment(updated_assignment.id)
     |> Db.Assignments.update_assignment(updated_assignment)
+
+    conn
+    |> render(FrontendWeb.AssignmentListView, "index.html")
+  end
+
+  def delete(conn, %{"assignment_num" => assignment_num} = _params) do    
+    assignment_num
+    |> to_int()
+    |> Db.Assignments.get_assignment()
+    |> Db.Assignments.delete_assignment()
 
     conn
     |> render(FrontendWeb.AssignmentListView, "index.html")

@@ -38,4 +38,8 @@
   <%= submit("Save", class: "btn btn-block btn-primary mb-2 mt-5") %>
 <% end %>
 
+<%= if assigns[:assignment_num] do %>
+  <%= button("Delete Assignment", to: new_assignment_path(@conn, :delete, @assignment_num), method: "delete", class: "btn btn-block btn-danger") %>
+<%= end %>
+
 <%= button("Assignments List", to: "/list", method: "get", class: "btn btn-block btn-success") %>
