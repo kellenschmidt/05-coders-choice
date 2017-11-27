@@ -1,6 +1,7 @@
 <div class="card text-dark mb-3">
   <div class="card-body">
-    <h4 class="card-title"><%= get_title(@assignment) %><%= content_tag(:span, get_priority(@assignment), [class: "badge badge-" <> get_color(@column) <> " ml-2"]) %></span></h4>
+    <%= content_tag(:span, get_due_date(@assignment), [class: "badge badge-" <> get_color(@column) <> " float-right"]) %>
+    <h4 class="card-title"><%= get_title(@assignment) %></h4>
     <div>
       <%= for label <- get_labels(@assignment) do %>
         <%= content_tag(:span, get_title(label), [class: "badge badge-pill badge-" <> get_color(label) <> " p-2 mb-2 mr-1"]) %>

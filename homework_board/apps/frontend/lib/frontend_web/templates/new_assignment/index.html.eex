@@ -10,10 +10,6 @@
   </label>
 
   <label>
-    Priority: <%= select f, :priority, 0..10 %>
-  </label>
-
-  <label>
     Column: <%= select f, :column_id, get_columns_list() %>
   </label>
 

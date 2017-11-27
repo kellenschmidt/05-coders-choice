@@ -49,34 +49,30 @@ defmodule FrontendWeb.NewAssignmentController do
     |> Enum.reduce(%{}, fn ({key, val}, acc) -> Map.put(acc, String.to_atom(key), val) end)
   end
 
-  defp format_map_with_ints(%{"id" => id_str, "priority" => priority_str, "column_id" => column_id_str, "labels" => labels_str_list} = assignment_map) do
+  defp format_map_with_ints(%{"id" => id_str, "column_id" => column_id_str, "labels" => labels_str_list} = assignment_map) do
     assignment_map
     |> to_int_and_add_to_map("id", id_str)
-    |> to_int_and_add_to_map("priority", priority_str)
     |> to_int_and_add_to_map("column_id", column_id_str)
     |> to_int_and_add_to_map("labels", labels_str_list)
     |> map_keys_from_string_to_atom()
   end
 
-  defp format_map_with_ints(%{"id" => id_str, "priority" => priority_str, "column_id" => column_id_str} = assignment_map) do
+  defp format_map_with_ints(%{"id" => id_str, "column_id" => column_id_str} = assignment_map) do
     assignment_map
     |> to_int_and_add_to_map("id", id_str)
-    |> to_int_and_add_to_map("priority", priority_str)
     |> to_int_and_add_to_map("column_id", column_id_str)
     |> map_keys_from_string_to_atom()
   end
 
-  defp format_map_with_ints(%{"priority" => priority_str, "column_id" => column_id_str, "labels" => labels_str_list} = assignment_map) do
+  defp format_map_with_ints(%{"column_id" => column_id_str, "labels" => labels_str_list} = assignment_map) do
     assignment_map
-    |> to_int_and_add_to_map("priority", priority_str)
     |> to_int_and_add_to_map("column_id", column_id_str)
     |> to_int_and_add_to_map("labels", labels_str_list)
     |> map_keys_from_string_to_atom()
   end
 
-  defp format_map_with_ints(%{"priority" => priority_str, "column_id" => column_id_str} = assignment_map) do
+  defp format_map_with_ints(%{"column_id" => column_id_str} = assignment_map) do
     assignment_map
-    |> to_int_and_add_to_map("priority", priority_str)
     |> to_int_and_add_to_map("column_id", column_id_str)
     |> map_keys_from_string_to_atom()
   end
